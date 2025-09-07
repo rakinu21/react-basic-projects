@@ -1,6 +1,7 @@
 
 import './App.css'
-import { Accurdian } from './components/accurdian'
+import Accurdian from './components/accordian/accurdian'
+
 
 function App() {
 
