@@ -1,76 +1,81 @@
-import React, { useState } from 'react';
-import './style.css';
-import data from './index.js';
 
-const Accurdian = () => {
-  const [seleted, setSelected] = useState(null);
-  const [enableMultiSelect, SetenableMultiSelect] = useState(false);
-  const [multiple, setMultiple] = useState([]);
 
-  // function for single selection
-  function handleSingleSelection(getCurrentId) {
-    setSelected(getCurrentId === seleted ? null : getCurrentId);
+
+import React, { useState } from 'react'
+import data from './index.js'
+import './style.css'
+
+export const Accurdian = () => {
+
+ 
+  const [toggleBtn , setToggleBtn] = useState(false)
+  const [itemSelect, setItemSelect] = useState(null);
+  
+  const [multiSelect, setMultiselect] = useState([]);
+
+
+
+  const handleSingleSelect = (getCurrentId)=> {
+
+    setItemSelect(itemSelect === getCurrentId ? null : getCurrentId)
   }
+ 
+ const handleMultipleSelection = ( getCurrentId) =>{
 
-  // function for multi selection
-  function handleMultiselection(getCurrentId) {
-    let cpyMultiSection = [...multiple];
-    const findIndexCurrectId = cpyMultiSection.indexOf(getCurrentId);
 
-    if (findIndexCurrectId === -1) cpyMultiSection.push(getCurrentId);
-    else cpyMultiSection.splice(findIndexCurrectId, 1);
+   let copyMultiple = [...multiSelect];
 
-    setMultiple(cpyMultiSection);
-  }
+   const NumberOfIndex = copyMultiple.indexOf(getCurrentId);
 
+
+   if(NumberOfIndex === -1) copyMultiple.push(getCurrentId)
+    else copyMultiple.splice(NumberOfIndex , 1);
+
+   setMultiselect(copyMultiple);
+
+   console.log(NumberOfIndex);
+ }
+
+  
   return (
-    <section id="wrapper">
-      <button
-        className="btn-toggle"
-        onClick={() => SetenableMultiSelect(!enableMultiSelect)}
-      >
-        {enableMultiSelect
-          ? 'Disable Multi Selection'
-          : 'Enable Multi Selection'}
-      </button>
+    <div className='wrapper'>
+      
 
-      <div className="accordian">
-        {data && data.length > 0 ? (
-          data.map((dataItem) => {
-            // check if item is open
-            const isOpen = enableMultiSelect
-              ? multiple.includes(dataItem.id)
-              : seleted === dataItem.id;
+      <button className="btntoggle" onClick={()=> setToggleBtn( ! toggleBtn)}>{toggleBtn ? 'disable multi-select': 'unable multi-select'}</button>
 
-            return (
-              <div
-                className={`item ${isOpen ? 'active' : ''}`}
-                key={dataItem.id}
-              >
-                <div
-                  className="title"
-                  onClick={
-                    enableMultiSelect
-                      ? () => handleMultiselection(dataItem.id)
-                      : () => handleSingleSelection(dataItem.id)
+
+      {/* add data  */}
+
+       <div className="accordian">
+
+          {
+            data && data.length > 0 ? 
+
+            data.map((item)=>{
+
+              return (
+
+                <div className="title" key={item.id} onClick={()=> toggleBtn ? handleMultipleSelection(item.id) : handleSingleSelect(item.id)}>
+
+                    <h3>{item.question}</h3>
+                    <span>{itemSelect === item.id ? '-' :'+'}</span>
+
+
+                    {toggleBtn ? 
+                     
+                     multiSelect.indexOf(item.id) !== -1 && <div className="answer">{item.answer}</div> :
+
+                     itemSelect === item.id && <div className="answer">{item.answer}</div>
                   }
-                >
-                  <h3>{dataItem.question}</h3>
-                  <span>+</span>
+
+              
                 </div>
+              )
+            }) : <p>no data found</p>
+          }
+       </div>
+    
+    </div>
+  )
+}
 
-                {isOpen && (
-                  <div className="content">{dataItem.answer}</div>
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <div>No data found</div>
-        )}
-      </div>
-    </section>
-  );
-};
-
-export default Accurdian;
