@@ -1,60 +1,64 @@
-import React, { useState } from 'react';
-import './style.css';
 
-const RandomColor = () => {
-  const [color, setColor] = useState('#131313');
-  const [mode, setMode] = useState('hex'); // track current mode
 
-  // Generate hex color
-  function generateHexaColor() {
-    const hexavalue = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
-    let hex = '#';
-    for (let i = 0; i < 6; i++) {
-      hex += hexavalue[Math.floor(Math.random() * hexavalue.length)];
+import './style.css'
+import React, { useEffect, useState } from 'react'
+
+export const RandomColor = () => {
+
+  const [typeColor , setTypeColor] = useState('hex');
+  const [color ,setColor] = useState('#131313')
+
+
+  const handleHexaColor = ()=>{
+
+        let hex = '#'
+    const hexeValue = [ '0','1','2' , '3','4','5','6','7','8','9','A','B','C','D','E','F'];
+   
+    for( let index = 0 ; index < 6 ; index ++){
+
+       const randomColor  = hexeValue[Math.floor(Math.random() * hexeValue.length)];
+
+     
+
+       hex += randomColor;
     }
-    setColor(hex);
-    setMode('hex');
+
+    console.log(hex)
+
+    setColor(hex)
+
   }
 
-  // Generate rgb color
-  function generateRgbColor() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    const rgb = `rgb(${r}, ${g}, ${b})`;
-    setColor(rgb);
-    setMode('rgb');
+  const handleRGB = ()=>{
+
+        const red = Math.floor(Math.random() * 255);
+     const green = Math.floor(Math.random() * 255);
+      const blue = Math.floor(Math.random() * 255);
+
+     const valuergb = `rgb(${red}, ${green}, ${blue})`;
+
+     console.log(valuergb)
+     setColor(valuergb)
+
   }
 
-  // Generate random color (choose randomly between hex & rgb)
-  function generateRandomColor() {
-    const randomChoice = Math.random() > 0.5 ? 'hex' : 'rgb';
-    if (randomChoice === 'hex') {
-      generateHexaColor();
-    } else {
-      generateRgbColor();
-    }
-    setMode('random');
-  }
-
+  useEffect(()=>{
+    typeColor === 'hex' ? handleHexaColor() : handleRGB()
+  },[typeColor])
   return (
-    <section id="random-color" style={{ backgroundColor: color }}>
-      <div className="controller">
-        <button className="hexaColor" onClick={generateHexaColor}>
-          Hexa color
-        </button>
-        <button className="rgb-color" onClick={generateRgbColor}>
-          Rgb color
-        </button>
-        <button className="random color" onClick={generateRandomColor}>
-          Random color
-        </button>
+    <div className='colorbg' style={{background : color}}>
+
+      <div className="button">
+         <button className="rgb" onClick={()=> setTypeColor('rbg')}>rbg color</button>
+         <button className="hex" onClick={()=> setTypeColor('hex')}>hex color</button>
+         <button className="random" onClick={()=> typeColor === 'hex'? handleHexaColor(): handleRGB()}>random</button>
       </div>
 
-      <h2 className="text-color">{mode} color</h2>
-      <h1 className="color-value">{color}</h1>
-    </section>
-  );
-};
+      <div className="text">
+        <h1>{typeColor === 'hex'? 'Hexa color' : 'rgb color'}</h1>
+        <p>{color}</p>
+      </div>
+    </div>
+  )
+}
 
-export default RandomColor;
