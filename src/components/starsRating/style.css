@@ -2,17 +2,20 @@
     padding: 50px 0;
     display: flex;
      justify-content: center;
+     gap: 10px;
 
 }
 
 
-.star {
-  color: #d1d5db; /* gray */
-  transition: color 0.2s ease;
-}
 
 
 
-.star.active {
+
+.active {
   color: #facc15; /* yellow */
+  cursor: pointer;
+}
+
+.inactive{
+  color: grey;
 }
