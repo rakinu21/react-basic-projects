@@ -1,0 +1,70 @@
+.imageSlider {
+    width: 500px;
+    margin: auto;
+    position: relative;
+    text-align: center;
+   margin-bottom: 30px;
+}
+
+.image-container {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.control-btn {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 10;
+}
+
+.control-btn svg {
+    font-size: 28px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.indicator-wrapper {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #bbb;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background: #333;
+    transform: scale(1.2);
+}
+
+.slider-image {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slider-image.show {
+    opacity: 1;
+}
