@@ -1,0 +1,81 @@
+/* Container */
+.tree-view-container {
+  width: 280px;
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* UL styling */
+.menu-list {
+  list-style: none;
+  padding-left: 15px;
+  margin: 6px 0;
+  border-left: 2px solid #dcdcdc;
+}
+
+/* Menu Item */
+.menu-list li {
+  padding: 6px 0;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+/* Label row (title + +/- icon) */
+.menu-list li > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Label text */
+.menu-list li p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* +/- toggle button */
+.menu-list li span {
+  background: #eee;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.menu-list li span:hover {
+  background: #ddd;
+}
+
+/* Hover highlight */
+.menu-list li:hover > div p {
+  color: #007bff;
+}
+
+/* Child transition */
+.menu-list ul {
+  animation: fadeSlide 0.2s ease forwards;
+}
+
+/* Fade animation */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
