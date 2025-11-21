@@ -5,6 +5,7 @@ import { ImageSlider } from './components/imageslider/ImageSlider'
 import { LoadMore } from './components/load-more-data/LoadMore'
 import menus from './components/nesteadNavbar/data.js'
 import { NesteadNavbar } from './components/nesteadNavbar/NesteadNavbar'
+import { QrCode } from './components/QrCode/QrCode.jsx'
 import { RandomColor } from './components/randomColor/RandomColor'
 import StarsRating from './components/starsRating/StarsRating'
 
@@ -20,6 +21,7 @@ function App() {
         <ImageSlider url={'https://picsum.photos/v2/list?page=1&limit=10'}/>
         <LoadMore/>
         <NesteadNavbar menus={menus}/>
+        <QrCode/>
      </main>
   )
 }
