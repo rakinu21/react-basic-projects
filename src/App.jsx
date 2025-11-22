@@ -8,6 +8,7 @@ import { NesteadNavbar } from './components/nesteadNavbar/NesteadNavbar'
 import { QrCode } from './components/QrCode/QrCode.jsx'
 import { RandomColor } from './components/randomColor/RandomColor'
 import StarsRating from './components/starsRating/StarsRating'
+import { ToggleTheme } from './components/togglehteme/ToggleTheme.jsx'
 
 
 
@@ -15,13 +16,14 @@ function App() {
 
   return (
      <main>
-        <Accurdian/>
+        {/* <Accurdian/>
         <RandomColor/>
         <StarsRating/> 
         <ImageSlider url={'https://picsum.photos/v2/list?page=1&limit=10'}/>
         <LoadMore/>
         <NesteadNavbar menus={menus}/>
-        <QrCode/>
+        <QrCode/> */}
+        <ToggleTheme/>
      </main>
   )
 }

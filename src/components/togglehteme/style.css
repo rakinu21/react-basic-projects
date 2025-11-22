@@ -1,0 +1,38 @@
+:root{
+    --barkground : #ffffff;
+    --text-color : #131313;
+    --button: #131313;
+    --button-text : #ffffff;
+}
+
+[data-theme ='dark']{
+
+        --barkground : #131313;
+    --text-color : #ffffff;
+    --button: #ffffff;
+    --button-text : #131313;
+}
+
+.light-dark-mode{
+
+    background-color: var(--barkground);
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    transition: 0.5s ease-in-out;
+  
+
+    p{
+        color: var(--text-color);
+    }
+    
+    button{
+        padding: 10px 20px;
+        color: var(--text-color);
+        background-color: var(--barkground);
+    }
+
+}
+
