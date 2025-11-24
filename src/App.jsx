@@ -7,6 +7,7 @@ import menus from './components/nesteadNavbar/data.js'
 import { NesteadNavbar } from './components/nesteadNavbar/NesteadNavbar'
 import { QrCode } from './components/QrCode/QrCode.jsx'
 import { RandomColor } from './components/randomColor/RandomColor'
+import { ScrollIndicator } from './components/scrollIndicator/ScrollIndicator.jsx'
 import StarsRating from './components/starsRating/StarsRating'
 import { ToggleTheme } from './components/togglehteme/ToggleTheme.jsx'
 
@@ -24,6 +25,7 @@ function App() {
         <NesteadNavbar menus={menus}/>
         <QrCode/> */}
         <ToggleTheme/>
+        <ScrollIndicator url={'https://dummyjson.com/products?limit=100'}/>
      </main>
   )
 }
